@@ -1,0 +1,11 @@
+---
+title: "ESM262ClimatePackage"
+author: "Sofie McComb and Margaux Sleckman"
+date: "June 6, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
