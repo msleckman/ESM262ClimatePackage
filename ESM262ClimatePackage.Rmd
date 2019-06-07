@@ -9,3 +9,12 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+
+#clim<-read.delim("data/clim", header=T, sep="")
+#use_data(clim, pkg=ESM262ClimatePackage, overwrite=TRUE)
+
+
+
+```
+
