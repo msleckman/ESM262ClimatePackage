@@ -11,8 +11,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 
-#clim<-read.delim("data/clim", header=T, sep="")
-#use_data(clim, pkg=ESM262ClimatePackage, overwrite=TRUE)
+clim<-read.delim("data/clim.txt", header=T, sep="")
+#setwd("H:/Github")
+# use_data(clim, pkg=ESM262ClimatePackage, overwrite=TRUE)
 
 
 

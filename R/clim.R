@@ -1,21 +1,22 @@
-#' Climate Data from Santa Barbara
+#' Climate Data from Santa Barbara County
 #'
 #' Data from SB-LTER metereology station, daily
 #' meterologic data including minimum temperature,
 #' maximum temperature, precipitation, water year,
 #' and the date
 #'
-#' @format A data frame with 7920 rows and 9 variables:
+#' @format A data frame with 27274 rows and  variables:
 #' \itemize{
-#' \item D Year-Month-Day
-#' \item day
-#' \item month
+#' \item date Month/Day/Year
+#' \item tmin minimum temperature (C)
+#' \item tmax maximum temperature (C)
+#' \item rain precipitation (mm/day)
 #' \item year
+#' \item month
+#' \item day
 #' \item wy wateryear
-#' \item tmax_c maximum temperature (C)
-#' \item tmin_c minimum temperature (C)
-#' \item precip precipitation (mm/day)
-#' \item wyd water year day
 #' }
 #'
-#' @source \
+#' @source \url{http://sbc.lternet.edu/data/}
+#'
+"clim"
