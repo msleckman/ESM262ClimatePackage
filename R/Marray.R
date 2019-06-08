@@ -10,54 +10,45 @@
 #'
 #'
 
-
+library(dplyr)
 
 Marray_function <-function(clim){ }
 
+clim$week <- NA
 
-clim <- clim %>% mutate(week = )
+clim <- clim %>%
+  mutate(week = ifelse(day <= 7, 1,
+                       ifelse(day > 7 & day <= 14, 2,
+                              ifelse(day > 14 & day <= 21, 3,
+                                     ifelse(day > 21, 4, NA)
+                                     ))))
 
-clim$week <- for(i in nrow(clim)){
 
-  if(clim$day <= 7){
-    clim$week[i] == 1
-    }
-
-  if(clim$day > 7 & <= 14){
-    clim$week[i] == 2
-  }
-
-  if(clim$day > 14 & <= 21){
-    clim$week[i] == 3
-  }
-
-  if (clim$day > 21){
-  clim$week[i] == 4
-  }
-}
-
-values
 
 clim_array = array(dim = c(4, 12, 75))
 dim(clim_array)
-clim_array
+clim_array[1,2,3]
 
 # populate with values (we are just guessing, ideally this is where measuring would occur)
 
-for (year in 1:75){
+for (week in 1:4){
   for (month in 1:12){
-    for (week in 1:4) {
+    # for(year in 1:75){
 
-      value = clim$rain[]
-      clim_array[i,j,]=value
+      # value = runif(min=0.2,max=0.5, n=75)
+      value = mean(clim$rain)
 
-    }
-  }
+      clim_array[week,month,]=value
+
+      # value = mean(clim$rain[week])
+      # clim_array[]= value
+  #  }
+}
 }
 
-head(clim_array[,,1])
+head(clim_array)
 
-clim_array[,,1]
+clim_array
 
 # add useful names
 dimnames(soilm) = list(c("Farm1","Farm2","Farm3","Farm4","Farm5"),
