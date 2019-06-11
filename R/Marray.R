@@ -12,50 +12,48 @@
 
 library(dplyr)
 
-Marray_function <-function(clim){ }
+Marray_function <-function(clim){
 
-
-clim$week <- NA
-
-clim <- clim %>%
+clim_w_week <- clim %>%
   mutate(week = ifelse(day <= 7, 1,
                        ifelse(day > 7 & day <= 14, 2,
                               ifelse(day > 14 & day <= 21, 3,
                                      ifelse(day > 21, 4, NA)
-                                     ))))
+                                     )))) %>% transform(id=match(year, unique(year)))
 
 
+clim_array = array(dim = c(4, 12, 74))
 
-clim_array = array(dim = c(4, 12, 75))
-dim(clim_array)
-clim_array[1,2,3]
+## Populate with values (we are just guessing, ideally this is where measuring would occur
 
-# populate with values (we are just guessing, ideally this is where measuring would occur)
+for (weeks in 1:4){
+  for (months in 1:12){
+    for (years in 1:74){
 
-for (week in 1:4){
-  for (month in 1:12){
-    # for(year in 1:75){
+        value <- clim_w_week %>%
+          filter(week == weeks & month == months & id == years) %>%
+          summarise(weekrain=mean(rain, na.rm=T))
 
-      # value = runif(min=0.2,max=0.5, n=75)
-      value = mean(clim$rain)
+        clim_array[weeks, months, years]  = as.numeric(value)
 
-      clim_array[week,month,]=value
-
-      # value = mean(clim$rain[week])
-      # clim_array[]= value
-  #  }
-}
-}
-
-head(clim_array)
-
-clim_array
+      }
+    }
+  }
 
 # add useful names
-dimnames(soilm) = list(c("Farm1","Farm2","Farm3","Farm4","Farm5"),
-                       c("apple","avocado","orange","almond"),
-                       c("shallow","deep"))
+dimnames(clim_array) = list(c("week 1","week 2","week 3","week 4"),
+                       c("Jan","Feb", "Mar", "Apr", "May", "Jun",
+                          "Jul","Aug", "Sep", "Oct","Nov", "Dec"),
+                       c(seq(1942,2015))
+                         )
 
-length(unique(clim$year))
+## average precip by year
+average_precip_by_year = apply(clim_array, c(3), mean)
 
+## average precip by month
+average_precip_by_month = apply(clim_array, c(2), mean)
 
+return(list(`average precipitation by year` = average_precip_by_month, `average precipitation per year` = average_precip_by_year)
+       )
+
+}
