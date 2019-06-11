@@ -9,6 +9,10 @@
 #' @return
 #'
 
+
+library(dplyr)
+library(tidyverse)
+
 heating_airtemp_function <- function(climatedata,
                                      price_heating_degree = 0.8, price_cooling_per_degree = 0.8,
                                      airconditioning = T, heating = T){
@@ -43,7 +47,6 @@ plot <- ggplot(AC_heating_per_month)+
        # subtitle = sprintf(price_heating_degree, price_cooling_per_degree)
        )
 
-
 # install.packages("plotly")
 # library(plotly)
 #
@@ -53,9 +56,8 @@ plot <- ggplot(AC_heating_per_month)+
 #
 # gg
 
-return(as.list(AC_heating_per_month, plot))
+return(list(AC_heating_per_month, plot))
 }
-
 
 
 heating_airtemp_function(clim)
