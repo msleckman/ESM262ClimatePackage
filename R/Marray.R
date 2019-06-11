@@ -3,7 +3,6 @@
 #' @description this function takes the climate dataset clim and turns it into an multidimentional array to then output the average weekly precip per month across the years and the average weekly precipitation across the years.
 #' @param clim_data the climate dataset. Input the clim dataframe from this package
 #' @author Sofie McComb & Margaux Sleckman
-#' @example Marray_function(clim_data = clim)
 #' @return a list that includes a dataframe of average weekly precipitation per month across all years and a dataframe of average weekly precipitaiton per year
 
 
