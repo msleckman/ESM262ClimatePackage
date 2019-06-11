@@ -22,7 +22,7 @@ array(dim = c(31, 12, ~50))
 ### Function 3: Temperature function 
 
 make different dataframes for santa barbara species 
-and then set suitability values based on temp and precipitaiton values
+and then set suitability values based on temp values
 if heat is great/less than temp_stress_index = 3
 if heat is great/less than temp_stress_index = 2
 if heat is great/less than temp_stress_index = 1
