@@ -2,17 +2,23 @@
 % Please edit documentation in R/PlotTempBySeason.R
 \name{PlotTempBySeason}
 \alias{PlotTempBySeason}
-\title{Function to plot maximum and minimum temperature by season across the years}
+\title{Plot Temperature by Season}
 \usage{
 PlotTempBySeason(climdata)
 }
 \arguments{
-\item{climdata}{data frame of climate data}
+\item{climdata}{Data frame of climate data}
 }
 \value{
-dataframe and ggplot of maximum and minimum temperature over the years facet wrapped by season
-Add more of the description from calcfishrevenue as basis
+List with the following items
+\describe{
+\item{ClimateDF}{Data frame of maximum and minimum temperature by season over the years}
+\item{ClimatePlot}{Plot of maximum and minimum temperature over the years facet-wrapped by season}
+}
 }
 \description{
-Plot Temperature by Season
+Function to calculate and plot maximum and minimum temperature by season across the years
+}
+\examples{
+PlotTempBySeason(climdata=clim)
 }

@@ -1,11 +1,17 @@
-#' Function to plot maximum and minimum temperature by season across the years
-#'
 #' Plot Temperature by Season
-#' @param climdata data frame of climate data
-#' @return dataframe and ggplot of maximum and minimum temperature over the years facet wrapped by season
-#' Add more of the description from calcfishrevenue as basis
+#'
+#' Function to calculate and plot maximum and minimum temperature by season across the years
+#' @param climdata Data frame of climate data
+#' @return List with the following items
+#' \describe{
+#' \item{ClimateDF}{Data frame of maximum and minimum temperature by season over the years}
+#' \item{ClimatePlot}{Plot of maximum and minimum temperature over the years facet-wrapped by season}
+#' }
+#' @examples
+#' PlotTempBySeason(climdata=clim)
 
-#library(tidyverse) #should libraries be loaded in a function?
+#Add these throughout and in description:
+#library(tidyverse)
 #library(ggplot2)
 
 PlotTempBySeason=function(climdata){
