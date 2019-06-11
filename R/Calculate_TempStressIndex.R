@@ -4,12 +4,14 @@
 #' Compute climate stress days, or the number of days per year where tmax >86 deg F (>30 deg C).
 #' If species stress days <= climate stress days, than the species stressed column equals yes, otherwise it equals no.
 #' @param climdata data frame of climate data
-#' @param speciesdf data frame of species temperature stress data
+#' @param speciesdf data frame of species temperature and precipitation characteristic data
 #' @return dataframe of species temperature stress status by year and the number of high temperature stress days that year
 #'
 #' @references
 #' http://agron-www.agron.iastate.edu/courses/Agron541/classes/541/lesson04a/4a.2.html
 #' Air temperatures of >86 deg F (>30 deg C) are considered high stress temperatures for most plant species
+#' https://plants.usda.gov/
+#' Plant characteristic information from the USDA
 
 ###################################################################
 
@@ -24,7 +26,7 @@ Calculate_TempStressIndex=function(climdata, speciesdf){
     summarize(stressdays=sum(tmax >= 30,na.rm = T))
 
   #Format species dataframe in wideformat to combine with climate data
-  species_wide <- species %>%
+  species_wide <- speciesdf %>%
     select(Species, StressDays) %>%
     spread(Species, StressDays)
 
