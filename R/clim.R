@@ -5,7 +5,7 @@
 #' maximum temperature, precipitation, water year,
 #' and the date
 #'
-#' @format A data frame with 27274 rows and  variables:
+#' @format A data frame with 27274 rows and 8 variables:
 #' \itemize{
 #' \item date Month/Day/Year
 #' \item tmin minimum temperature (C)
