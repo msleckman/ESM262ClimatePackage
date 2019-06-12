@@ -5,17 +5,18 @@ Version: 0.1.0
 Author: Sofie McComb & Margaux Sleckman
 Maintainer: The package maintainer is <shemccomb@gmail.com>
 Description: This package can be used to assess the impacts of climate changes in Santa Barbara, and to support decision-making on strategies to address these climate impacts.
-License: MIT
+License: Do not need license
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+Depends:
+    R (>= 3.2.2)
 Imports:
     tidyverse,
     dplyr,
     tidyr,
     readr,
     stringr,
-    knitr,
     ggiraph,
     ggplot2
 Suggests: knitr, rmarkdown
