@@ -5,8 +5,9 @@
 #' @param climatedata This is where you put in a climate dataset.
 #' @param price_heating_per_degree this is the cost of every incremental increasing in heating due to the difference in actual heating with the baseline.
 #' @param price_cooling_per_degree same as above, but for cooling.
+#' @param interactive_plot_selection If T, the function returns a plot of the cost datapoints. The AC costs are in blue, the heating costs are in red.
 #' @author Sofie McComb & Margaux Sleckman
-#' @examples  calculate_heating_AC_cost(climatedata = clim, price_heating_per_degree = 0.8,
+#' @examples  CalculateAC_heatingCost(climatedata = clim, price_heating_per_degree = 0.8,
 #' price_cooling_per_degree = 0.8, interactive_plot_selection = T)
 #' @return a list of the dataframe with date, month, year, and the cost of heating and cooling for that day.
 
@@ -42,11 +43,13 @@ CalculateAC_heatingCost <- function(climatedata,
   # "7.5" = "July", "10.0" = "Oct", "12.5" = "Dec"))
   # plot
 
-  interactive_plot <- girafe(code = print(plot))
+  interactive_plot <- ggiraph::girafe(code = print(plot))
 
   if(interactive_plot_selection == T){
+
     return(list(Dataframe = AC_heating_per_month, Plot = interactive_plot))
-  }
+
+    }
 
   else{
 

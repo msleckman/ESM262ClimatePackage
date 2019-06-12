@@ -1,9 +1,10 @@
 #' Function 2: Calculate Monthly Precipitation
-#'  Function calculated mean weekly rainfall (across months, across years)
-#' @description this function takes the climate dataset clim and turns it into an multidimentional array to then output the average weekly precip per month across the years and the average weekly precipitation across the years.
+#'
+#' @description This function takes the climate dataset clim and turns it into an multidimentional array to then output the average weekly precip per month across the years and the average weekly precipitation across the years.
 #' @param clim_data the climate dataset. Input the clim dataframe from this package
 #' @author Sofie McComb & Margaux Sleckman
-#' @return a list that includes a dataframe of average weekly precipitation per month across all years and a dataframe of average weekly precipitaiton per year
+#' @examples CalculateMonthlyPrecip(clim_data = clim)
+#' @return A list that includes a dataframe of average weekly precipitation per month across all years and a dataframe of average weekly precipitaiton per year
 
 
 CalculateMonthlyPrecip <-function(clim_data){
@@ -17,7 +18,7 @@ CalculateMonthlyPrecip <-function(clim_data){
                                      ifelse(day > 21, 4, NA)
                                      )))) %>% transform(id=match(year, unique(year)))
 
-years_working <-  nrow(years)-1
+years_working <-  length(unique(clim_data))-1
 
 clim_array = array(dim = c(4, 12, years_working))
 
@@ -25,7 +26,7 @@ clim_array = array(dim = c(4, 12, years_working))
 
 for (weeks in 1:4){
   for (months in 1:12){
-    for (years in 1:(nrow(years)-1)){
+    for (years in 1:years_working){
 
         value <- clim_w_week %>%
           dplyr::filter(week == weeks & month == months & id == years) %>%
