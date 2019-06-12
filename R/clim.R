@@ -7,14 +7,14 @@
 #'
 #' @format A data frame with 27274 rows and 8 variables:
 #' \itemize{
-#' \item date Month/Day/Year
-#' \item tmin minimum temperature (C)
-#' \item tmax maximum temperature (C)
-#' \item rain precipitation (mm/day)
+#' \item date is the Month/Day/Year
+#' \item tmin is the minimum temperature (C)
+#' \item tmax is the maximum temperature (C)
+#' \item rain is precipitation (mm/day)
 #' \item year
 #' \item month
 #' \item day
-#' \item wy wateryear
+#' \item wy is the wateryear
 #' }
 #'
 #' @source \url{http://sbc.lternet.edu/data/}

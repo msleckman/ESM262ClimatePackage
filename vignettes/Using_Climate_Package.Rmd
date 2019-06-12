@@ -1,5 +1,5 @@
 ---
-title: "Using_Climate_Package"
+title: "Introduction to the ESM262ClimatePackage"
 author: "Sofie McComb &  Margaux Sleckman"
 output: rmarkdown::html_vignette
 vignette: >
@@ -12,4 +12,88 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Create Vignette
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+options(tibble.print_min = 4L, tibble.print_max = 4L)
+library(ESM262ClimatePackage)
+```
+
+
+The ESM262ClimatePackage was developed to perform introductory assessments of climate change impacts to inform climate change mitigation and adaptation strategies.
+
+This document introduces you to the packages functions, and shows how they can be used with sample dataframes. This vignette can be called by using vignette("Using_Climate_Package").
+
+There are two sample datasets included in the package:
+
+1. clim
+2. species
+
+
+There are five functions included in the package:
+
+1. PlotTempBySeason
+2. CalculateMonthlyPrecip
+3. Calculate_TempStressIndex
+4. Compute_WaterRequirements
+5. ComputeHeatingAC_Cost
+
+
+
+##Sample Data: clim and species
+
+To explore how the functions in the Using_Climate_Package work, we will be using two sample datasets: clim and species. 
+
+1. clim = dataframe from the SB_LTER meterology station (http://sbc.lternet.edu/data/), that includes daily meterologic data for:
+ + minimum temperature (degC)
+ + maximum temperature (degC)
+ + precipitation (mm/day)
+ + water year
+ + date (including date, month, year)
+
+2. species = dataframe of species plant characterisitc information (https://plants.usda.gov/) including:
+ + species identifier
+ + scientific name
+ + common name
+ + drought tolerance capability (low, medium, high)
+ + number of days species can tolerate high heat stress per year
+ + minimum annual precipitation (mm) species can tolerate
+ + maximum annual precipitation (mm) species can tolerate
+
+More information for both datasets can be found by using help(clim) and help(species).
+
+```{r}
+
+library(ESM262ClimatePackage)
+
+#Explore clim dataset
+head(clim)
+
+#Explore species dataset
+head(species)
+
+```
+
+
+##Functions
+
+###PlotTempBySeason():Calculate and Plot Seasonal Temperatures  
+PlotTempBySeason() allows you to calculate and plot maximum and minimum temperature by season across the years. The only argument required is the climate dataset to be inputted, which must be in a similar format to the clim sample dataset shown above. The function will return a dataframe and plot of maximum and minimum temperature by season over the years given in the sample dataset.
+
+For example, we can give the function the clim dataset:
+
+```{r}
+
+source("../R/PlotTempBySeason.R")
+PlotTempBySeason(clim)
+
+```
+
+
+####CalculateMonthlyPrecip():
+
+####Calculate_TempStressIndex():
+
+####Compute_WaterRequirements():
+
+####ComputeHeatingAC_Cost():
