@@ -77,23 +77,74 @@ head(species)
 
 ##Functions
 
-###PlotTempBySeason():Calculate and Plot Seasonal Temperatures  
+###PlotTempBySeason(): Calculate and Plot Seasonal Temperatures  
+PlotTempBySeason() allows you to calculate and plot maximum and minimum temperature by season across the years. The only argument required is the climate dataset to be inputted, which must be in a similar format to the clim sample dataset shown above. The function will return a dataframe with the average maximum temperatue and minimimum temperature by season for each year. It will also return a plot of maximum and minimum temperature by season over the years given in the sample dataset, with maximum average in red and minimum average in blue.
+
+For example, we can give the function the clim dataset, and call the specific outputs:
+
+```{r}
+
+source("../R/PlotTempBySeason.R")
+results1<-PlotTempBySeason(clim)
+
+#Call the dataframe of results
+head(results1$ClimateDF)
+
+#Call the ggplot
+results1$ClimatePlot
+
+```
+
+
+####CalculateMonthlyPrecip(): Calculate Monthly Precipitation
+
+CalculateMonthlyPrecip() transforms a climate dataset into a multidimentional array and calculates the average weekly weekly precipitation by month and by year, returning two dataframes with the solutions. The only argument required is the climate dataset to be inputted, which must be in a similar format to the clim sample dataset shown above.
+
+For example, we can give the function the clim dataset:
+
+```{r}
+
+source("../R/CalculateMonthlyPrecip")
+results2<-CalculateMonthlyPrecip(clim)
+
+```
+
+####Calculate_TempStressIndex():
+
 PlotTempBySeason() allows you to calculate and plot maximum and minimum temperature by season across the years. The only argument required is the climate dataset to be inputted, which must be in a similar format to the clim sample dataset shown above. The function will return a dataframe and plot of maximum and minimum temperature by season over the years given in the sample dataset.
 
 For example, we can give the function the clim dataset:
 
 ```{r}
 
-source("../R/PlotTempBySeason.R")
-PlotTempBySeason(clim)
+source("../R/Calculate_TempStressIndex")
+Calculate_TempStressIndex(clim, species)
 
 ```
 
-
-####CalculateMonthlyPrecip():
-
-####Calculate_TempStressIndex():
-
 ####Compute_WaterRequirements():
 
+PlotTempBySeason() allows you to calculate and plot maximum and minimum temperature by season across the years. The only argument required is the climate dataset to be inputted, which must be in a similar format to the clim sample dataset shown above. The function will return a dataframe and plot of maximum and minimum temperature by season over the years given in the sample dataset.
+
+For example, we can give the function the clim dataset:
+
+```{r}
+
+source("../R/Compute_WaterRequirements")
+Compute_WaterRequirements(clim, species)
+
+```
+
 ####ComputeHeatingAC_Cost():
+
+PlotTempBySeason() allows you to calculate and plot maximum and minimum temperature by season across the years. The only argument required is the climate dataset to be inputted, which must be in a similar format to the clim sample dataset shown above. The function will return a dataframe and plot of maximum and minimum temperature by season over the years given in the sample dataset.
+
+For example, we can give the function the clim dataset:
+
+```{r}
+
+source("../R/ComputeHeatingAC_Cost.R")
+ComputeHeatingAC_Cost(clim, price_heating_per_degree = 0.8, price_cooling_per_degree = 0.8,
+                      interactive_plot_selection = T)
+
+```
