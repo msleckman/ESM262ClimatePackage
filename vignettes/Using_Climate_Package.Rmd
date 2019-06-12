@@ -67,9 +67,11 @@ More information for both datasets can be found by using help(clim) and help(spe
 library(ESM262ClimatePackage)
 
 #Explore clim dataset
+data(clim)
 head(clim)
 
 #Explore species dataset
+data(species)
 head(species)
 
 ```
