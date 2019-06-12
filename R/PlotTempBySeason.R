@@ -42,12 +42,12 @@ for (i in 1: nrow(climdata)){
 
 #Get the mean max and min temp per season per year
 meanclim <- climdata %>%
-  group_by(year, season) %>%
-  summarise(avgmaxtemp = mean(tmax, na.rm = T),
+  dplyr::group_by(year, season) %>%
+  dplyr::summarise(avgmaxtemp = mean(tmax, na.rm = T),
             avgmintemp=mean(tmin, na.rm=T))
 
 #Plot the max and min seasonal temp per year
-climplot<-ggplot(meanclim, aes(x=year)) +
+climplot<-ggplot2::ggplot(meanclim, aes(x=year)) +
   geom_line(aes(y=avgmaxtemp),colour="red") +
   geom_line(aes(y=avgmintemp),colour="skyblue") +
   facet_grid(~season)+
