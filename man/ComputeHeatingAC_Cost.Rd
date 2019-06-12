@@ -5,7 +5,7 @@
 \title{Heating and Cooling Cost Function}
 \usage{
 ComputeHeatingAC_Cost(climatedata, price_heating_per_degree = 0.8,
-  price_cooling_per_degree = 0.8, interactive_plot_selection = T)
+  price_cooling_per_degree = 0.8, interactive_plot_selection = F)
 }
 \arguments{
 \item{climatedata}{This is where you put in a climate dataset.}
