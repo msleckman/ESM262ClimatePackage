@@ -67,8 +67,8 @@ average_precip_by_month = apply(clim_array, c(2), mean)
 average_precip_by_month <- as.data.frame(average_precip_by_month)
 
 
-return(list(`average precipitation by month` = average_precip_by_month,
-            `average precipitation per year` = average_precip_by_year))
+return(list(avge_precipitation_month = average_precip_by_month,
+            avge_precipitation_year = average_precip_by_year))
 
 }
 
