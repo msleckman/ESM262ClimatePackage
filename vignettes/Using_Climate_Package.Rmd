@@ -1,0 +1,14 @@
+---
+title: "Using_Climate_Package"
+author: "Sofie McComb &  Margaux Sleckman"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using_Climate_Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
