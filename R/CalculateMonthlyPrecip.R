@@ -5,6 +5,7 @@
 #' output the average weekly precip per month across the years and the average weekly precipitation
 #' across the years.
 #' @param clim_data parameter to addthe climate dataset. Input the clim dataframe from this package
+#' @param full_clim_dataset If T, set to accept the clim datasetand will print dimnames appropriate #' for size of that df
 #' @return List with the following items:
 #' \describe{
 #' \item{Dataframe}{dataframe of average weekly precipitation per month across all years since 1942}
