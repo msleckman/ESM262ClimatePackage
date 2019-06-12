@@ -1,15 +1,19 @@
-#' Function to compute water requirement status for different species on the basis of species minimum and maximum precipitation characteristics
+#' Compute Species Annual Water Status
 #'
-#' Compute Annual Water Requirements per Species.
-#' Water requirement status defined per species as insufficient (< precip min),
-#' adequate (btwn precip min and max), and oversaturated (> precip max)
-#' @param climdata data frame of climate data
-#' @param speciesdf data frame of species temperature and precipitation characteristic data
-#' @return dataframe of annual precipitation levels (mm) and species annual water requirement status
+#' Function to compute water requirement status for different species on the basis of species
+#' minimum and maximum precipitation characteristics.
+#' Water requirement status defined per species as insufficient (annual precipitation < species precip min),
+#' adequate (annual precipitation between species precip min and max), and oversaturated (annual precipitation >
+#' species precip max).
+#' Plant characteristic information from the USDA (establish minimum and maximum tolerable precipitation levels per species in mm).
+#' @param climdata Data frame of climate data
+#' @param speciesdf Data frame of species temperature and precipitation characteristic data
+#' @return Dataframe of annual precipitation levels (mm) and species annual water requirement status
 #'
 #' @references
 #' https://plants.usda.gov/
-#' Plant characteristic information from the USDA (establish minimum and maximum tolerable precipitation levels per species in mm)
+#' @example
+#' Compute_WaterRequirements(climdata=clim, speciesdf=species)
 
 ###################################################################
 

@@ -2,24 +2,26 @@
 % Please edit documentation in R/Compute_WaterRequirements.R
 \name{Compute_WaterRequirements}
 \alias{Compute_WaterRequirements}
-\title{Function to compute water requirement status for different species on the basis of species minimum and maximum precipitation characteristics}
+\title{Compute Species Annual Water Status}
 \usage{
 Compute_WaterRequirements(climdata, speciesdf)
 }
 \arguments{
-\item{climdata}{data frame of climate data}
+\item{climdata}{Data frame of climate data}
 
-\item{speciesdf}{data frame of species temperature and precipitation characteristic data}
+\item{speciesdf}{Data frame of species temperature and precipitation characteristic data}
 }
 \value{
-dataframe of annual precipitation levels (mm) and species annual water requirement status
+Dataframe of annual precipitation levels (mm) and species annual water requirement status
 }
 \description{
-Compute Annual Water Requirements per Species.
-Water requirement status defined per species as insufficient (< precip min),
-adequate (btwn precip min and max), and oversaturated (> precip max)
+Function to compute water requirement status for different species on the basis of species
+minimum and maximum precipitation characteristics.
+Water requirement status defined per species as insufficient (annual precipitation < species precip min),
+adequate (annual precipitation between species precip min and max), and oversaturated (annual precipitation >
+species precip max).
+Plant characteristic information from the USDA (establish minimum and maximum tolerable precipitation levels per species in mm).
 }
 \references{
 https://plants.usda.gov/
-Plant characteristic information from the USDA (establish minimum and maximum tolerable precipitation levels per species in mm)
 }
