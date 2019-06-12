@@ -31,10 +31,9 @@
 #' @author Sofie McComb & Margaux Sleckman
 #'
 
-
 ComputeHeatingAC_Cost = function(climatedata,
                                  price_heating_per_degree = 0.8, price_cooling_per_degree = 0.8,
-                                 interactive_plot_selection = T){
+                                 interactive_plot_selection = F){
 
 clim_cost <- climatedata %>%
     dplyr::mutate(average_temp = ((tmin+tmax)/2)) %>%

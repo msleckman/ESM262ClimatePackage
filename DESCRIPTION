@@ -20,5 +20,8 @@ Imports:
     ggiraph,
     ggplot2,
     magrittr
-Suggests: knitr, rmarkdown
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr
