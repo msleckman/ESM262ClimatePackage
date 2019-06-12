@@ -4,10 +4,12 @@
 \alias{CalculateMonthlyPrecip}
 \title{Calculate Monthly Precipitation}
 \usage{
-CalculateMonthlyPrecip(clim_data)
+CalculateMonthlyPrecip(clim_data, full_clim_dataset = T)
 }
 \arguments{
 \item{clim_data}{parameter to addthe climate dataset. Input the clim dataframe from this package}
+
+\item{full_clim_dataset}{If T, set to accept the clim datasetand will print dimnames appropriate #' for size of that df}
 }
 \value{
 List with the following items:

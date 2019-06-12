@@ -1,4 +1,3 @@
-
 test_that("ComputeHeatingAC_Cost works",{
 
   clim_test_data =
@@ -17,10 +16,10 @@ test_that("ComputeHeatingAC_Cost works",{
       day   = rep(1, times = 5),
       wy = rep(1942, times = 5)))
 
-clim_test_data <- clim_test_data %<>% mutate_if(is.factor,as.numeric)
+clim_test_data <- clim_test_data %>% dplyr::mutate_if(is.factor,as.numeric)
 
-expect_that(ComputeHeatingAC_Cost(clim_test_data)$meanHeating_cost, equals(16))
-expect_that(ComputeHeatingAC_Cost(clim_test_data)$meanAC_cost, equals(0))
+testthat::expect_that(ComputeHeatingAC_Cost(clim_test_data)$meanHeating_cost, equals(16))
+testthat::expect_that(ComputeHeatingAC_Cost(clim_test_data)$meanAC_cost, equals(0))
 
 })
 

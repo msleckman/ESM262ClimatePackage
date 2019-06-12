@@ -20,6 +20,8 @@ AC costs are in blue, the heating costs are in red.
 \describe{
 \item{Dataframe}{Data frame of date, month, year, and the cost of heating and cooling for that
 day}
+\item{meanHeating_cost}{1 number representing the mean heating cost}
+\item{meanAC_cost}{1 number representing the mean AC cost}
 \item{Plot}{Plot of costs of heating and cooling across months}
 }}
 }
