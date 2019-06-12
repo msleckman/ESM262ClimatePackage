@@ -35,9 +35,11 @@
 #'
 
 ComputeHeatingAC_Cost = function(climatedata,
-                                 price_heating_per_degree = 0.8, price_cooling_per_degree = 0.8,
+                                 price_heating_per_degree = 0.8,
+                                 price_cooling_per_degree = 0.8,
                                  interactive_plot_selection = F){
-  clim_cost <- climatedata %>%
+
+   clim_cost <- climatedata %>%
     dplyr::mutate(average_temp = ((tmin+tmax)/2)) %>%
     dplyr::mutate(AC_cost_daily = ifelse(tmin >= 14, (10 + abs(14 - average_temp * price_cooling_per_degree)), 0)) %>%
     dplyr::mutate(heating_cost_daily = ifelse(tmax <= 8, (10 + abs(8 - average_temp * price_heating_per_degree)), 0)) %>%
@@ -45,7 +47,9 @@ ComputeHeatingAC_Cost = function(climatedata,
 
 
   daily_AC_heating <- clim_cost %>%
-    dplyr::select(date, year, month, AC_cost_daily, heating_cost_daily, month_name) %>%
+    dplyr::select(date, year, month,
+                  AC_cost_daily, heating_cost_daily,
+                  month_name) %>%
     dplyr::mutate(month_name = month.abb[month])
 
 
@@ -57,7 +61,8 @@ ComputeHeatingAC_Cost = function(climatedata,
   meanHeating_cost <- mean(AC_heating_per_month$average_monthly_heating_cost)
   meanAC_cost <- mean(AC_heating_per_month$average_monthly_AC_cost)
 
-  AC_heating_per_month_for_plot <- subset(daily_AC_heating, AC_cost_daily != 0 | heating_cost_daily != 0)
+  AC_heating_per_month_for_plot <- subset(daily_AC_heating,
+                                          AC_cost_daily != 0 | heating_cost_daily != 0)
 
   plot <- ggplot2::ggplot(AC_heating_per_month_for_plot)+
     ggiraph::geom_point_interactive(ggplot2::aes(x=month_name,  y = AC_cost_daily,
