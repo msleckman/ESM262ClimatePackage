@@ -48,13 +48,13 @@ meanclim <- climdata %>%
 
 #Plot the max and min seasonal temp per year
 climplot<-ggplot2::ggplot(meanclim, aes(x=year)) +
-  geom_line(aes(y=avgmaxtemp),colour="red") +
-  geom_line(aes(y=avgmintemp),colour="skyblue") +
-  facet_grid(~season)+
-  theme_light()+
-  labs(x = "Years",
+  ggplot2::geom_line(aes(y=avgmaxtemp),colour="red") +
+  ggplot2::geom_line(aes(y=avgmintemp),colour="skyblue") +
+  ggplot2::facet_grid(~season)+
+  ggplot2::theme_light()+
+  ggplot2::labs(x = "Years",
        y = "Temperature (Celsius)")+
-  theme(text = element_text(size=12),
+  ggplot2::theme(text = element_text(size=12),
         plot.title = element_text(size=14, face="bold"),
         plot.subtitle = element_text(size=12),
         plot.caption = element_text(size=10,hjust = 0))

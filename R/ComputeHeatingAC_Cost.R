@@ -22,10 +22,10 @@
 #' }
 #' @author Sofie McComb & Margaux Sleckman
 #' @examples
-#' CalculateAC_HeatingCost(climatedata=clim)
+#' ComputeHeatingAC_Cost(climatedata=clim)
 
 
-CalculateAC_HeatingCost=function(climatedata,
+ComputeHeatingAC_Cost=function(climatedata,
                                  price_heating_per_degree = 0.8, price_cooling_per_degree = 0.8,
                                  interactive_plot_selection = T){
 
