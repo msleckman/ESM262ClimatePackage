@@ -20,8 +20,6 @@
 #' @references
 #' https://plants.usda.gov/
 #'
-#' @examples
-#' Compute_WaterRequirements(climdata=clim, speciesdf=species)
 #'
 #' @author
 #' Sofie McComb & Margaux Sleckman

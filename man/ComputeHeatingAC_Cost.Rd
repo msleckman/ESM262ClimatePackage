@@ -14,26 +14,31 @@ ComputeHeatingAC_Cost(climatedata, price_heating_per_degree = 0.8,
 
 \item{price_cooling_per_degree}{Same as above, but for cooling.}
 
-\item{interactive_plot_selection}{If T, the function returns a plot of the cost datapoints. The AC costs are in blue, the heating costs are in red.
+\item{interactive_plot_selection}{If T, the function returns a plot of the cost datapoints. The
+AC costs are in blue, the heating costs are in red.
 #' @return List with the following items
 \describe{
-\item{Dataframe}{Data frame of date, month, year, and the cost of heating and cooling for that day}
+\item{Dataframe}{Data frame of date, month, year, and the cost of heating and cooling for that
+day}
 \item{Plot}{Plot of costs of heating and cooling across months}
 }}
 }
 \description{
-This function takes climate data with daily minimum and maximum temperatures and returns the daily cost of air conditions and heating.
+This function takes climate data with daily minimum and maximum temperatures and returns the
+daily cost of air conditions and heating.
 }
 \details{
-The equation used to calculate the heating and cooling cost goes as the following: We assume the user will turn on heating
- if the temperature maximum is 8 degrees C. We assume the user will turn on AC if the temperature minimum is 14 degrees.
- Simply turning on the AC or the heater costs $10, and every additional degree above the baseline (8 C or 14 C) costs a
- specified price_per_degree. The default is 0.8, but this can be change by manipulating the appropriate param.
- This means that with every degree increase above or below the baseline temp, the cost goes up 0.8 cents.
+The equation used to calculate the heating and cooling cost goes as the following: We assume the
+user will turn on heating
+ if the temperature maximum is 8 degrees C. We assume the user will turn on AC if the temperatu
+ e minimum is 14 degrees.
+ Simply turning on the AC or the heater costs $10, and every additional degree above the
+ baseline (8 C or 14 C) costs a
+ specified price_per_degree. The default is 0.8, but this can be change by manipulating the
+ appropriate param.
+ This means that with every degree increase above or below the baseline temp, the cost goes up
+ .8 cents.
  So, you will spend $10.8 if the average outdoor temp is 15 degrees.
-}
-\examples{
-ComputeHeatingAC_Cost(climatedata=clim)
 }
 \author{
 Sofie McComb & Margaux Sleckman

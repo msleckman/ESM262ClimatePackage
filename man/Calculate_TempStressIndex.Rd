@@ -31,10 +31,6 @@ Plant characteristic information and climate tolerance sourced from the USDA.
 Function can be used to assess which species face greater temperature stress in the region,
 and may need additional support.
 }
-\examples{
-Calculate_TempStressIndex(climdata=clim, speciesdf=species)
-
-}
 \references{
 http://agron-www.agron.iastate.edu/courses/Agron541/classes/541/lesson04a/4a.2.html;
 https://plants.usda.gov/

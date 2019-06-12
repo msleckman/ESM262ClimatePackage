@@ -29,8 +29,7 @@
 #' \item{Plot}{Plot of costs of heating and cooling across months}
 #' }
 #' @author Sofie McComb & Margaux Sleckman
-#' @examples
-#' ComputeHeatingAC_Cost(climatedata=clim)
+#'
 
 
 ComputeHeatingAC_Cost=function(climatedata,

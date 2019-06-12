@@ -24,8 +24,6 @@
 #' http://agron-www.agron.iastate.edu/courses/Agron541/classes/541/lesson04a/4a.2.html;
 #' https://plants.usda.gov/
 #'
-#' @examples
-#' Calculate_TempStressIndex(climdata=clim, speciesdf=species)
 #'
 #' @author
 #' Sofie McComb & Margaux Sleckman

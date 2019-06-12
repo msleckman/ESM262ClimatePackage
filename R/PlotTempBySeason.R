@@ -14,16 +14,13 @@
 #' \item{ClimatePlot}{Plot of maximum and minimum temperature over the years facet-wrapped by season}
 #' }
 #'
-#' @examples
-#' PlotTempBySeason(climdata=clim)
-#'
 #' @author
 #' Sofie McComb & Margaux Sleckman
 
 PlotTempBySeason=function(climdata){
 
 #Remove the last year so to make sure dataframe ends with a full year of data
-climdata<-climdata[climdata$year!=max(clim$year), ]
+climdata<-climdata[climdata$year!=max(climdata$year), ]
 
 # Add column with seasons Spring, Summer, Fall, and Winter based on Month
 climdata$season<-""
@@ -42,22 +39,18 @@ for (i in 1: nrow(climdata)){
 
 #Get the mean max and min temp per season per year
 meanclim <- climdata %>%
-  dplyr::group_by(year, season) %>%
-  dplyr::summarise(avgmaxtemp = mean(tmax, na.rm = T),
-            avgmintemp=mean(tmin, na.rm=T))
+  dplyr::group_by_(~year, ~season) %>%
+  dplyr::summarise_(avgmaxtemp = mean(~tmax, na.rm = T),
+            avgmintemp=mean(~tmin, na.rm=T))
 
 #Plot the max and min seasonal temp per year
-climplot<-ggplot2::ggplot(meanclim, aes(x=year)) +
-  ggplot2::geom_line(aes(y=avgmaxtemp),colour="red") +
-  ggplot2::geom_line(aes(y=avgmintemp),colour="skyblue") +
+climplot<-ggplot2::ggplot(meanclim, aes(x=~year)) +
+  ggplot2::geom_line(aes(y=~avgmaxtemp),colour="red") +
+  ggplot2::geom_line(aes(y=~avgmintemp),colour="skyblue") +
   ggplot2::facet_grid(~season)+
   ggplot2::theme_light()+
   ggplot2::labs(x = "Years",
-       y = "Temperature (Celsius)")+
-  ggplot2::theme(text = element_text(size=12),
-        plot.title = element_text(size=14, face="bold"),
-        plot.subtitle = element_text(size=12),
-        plot.caption = element_text(size=10,hjust = 0))
+       y = "Temperature (Celsius)")
 
 #Return dataframe and ggplot
 return(list(ClimateDF=meanclim, ClimatePlot=climplot))

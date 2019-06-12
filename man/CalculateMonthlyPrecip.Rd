@@ -2,21 +2,24 @@
 % Please edit documentation in R/CalculateMonthlyPrecip.R
 \name{CalculateMonthlyPrecip}
 \alias{CalculateMonthlyPrecip}
-\title{Function 2: Calculate Monthly Precipitation}
+\title{Calculate Monthly Precipitation}
 \usage{
 CalculateMonthlyPrecip(clim_data)
 }
 \arguments{
-\item{clim_data}{the climate dataset. Input the clim dataframe from this package}
+\item{clim_data}{parameter to addthe climate dataset. Input the clim dataframe from this package}
 }
 \value{
-A list that includes a dataframe of average weekly precipitation per month across all years and a dataframe of average weekly precipitaiton per year
+List with the following items:
+\describe{
+\item{Dataframe}{dataframe of average weekly precipitation per month across all years since 1942}
+\item{Dataframe}{dataframe of average weekly precipitaiton for every year since 1942}
+}
 }
 \description{
-This function takes the climate dataset clim and turns it into an multidimentional array to then output the average weekly precip per month across the years and the average weekly precipitation across the years.
-}
-\examples{
-CalculateMonthlyPrecip(clim_data = clim)
+This function takes the climate dataset clim and turns it into an multidimentional array to then
+output the average weekly precip per month across the years and the average weekly precipitation
+across the years.
 }
 \author{
 Sofie McComb & Margaux Sleckman

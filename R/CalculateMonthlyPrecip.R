@@ -11,8 +11,8 @@
 #' \item{Dataframe}{dataframe of average weekly precipitaiton for every year since 1942}
 #' }
 #' @author Sofie McComb & Margaux Sleckman
-#' @examples
-#' CalculateMonthlyPrecip(clim_data = clim)
+#'
+
 
 
 CalculateMonthlyPrecip <- function(clim_data){

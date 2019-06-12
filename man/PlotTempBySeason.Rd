@@ -23,10 +23,6 @@ Function to calculate and plot maximum and minimum temperature by season across 
 Seasons were defined as: Spring (March, April, May), Summer (June, July, August),
 Fall (September, October, November), and Winter (December, January, February).
 }
-\examples{
-PlotTempBySeason(climdata=clim)
-
-}
 \author{
 Sofie McComb & Margaux Sleckman
 }
