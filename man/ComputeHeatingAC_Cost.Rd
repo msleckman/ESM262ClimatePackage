@@ -10,7 +10,7 @@ ComputeHeatingAC_Cost(climatedata, price_heating_per_degree = 0.8,
 \arguments{
 \item{climatedata}{This is where you put in a climate dataset.}
 
-\item{price_heating_per_degree}{This is the cost of every incremental increasing in heating due to the difference in actual heating with the baseline.}
+\item{price_heating_per_degree}{This is the cost of every incremental increasing in heating due #' to the difference in actual heating with the baseline.}
 
 \item{price_cooling_per_degree}{Same as above, but for cooling.}
 

@@ -1,6 +1,6 @@
 #' Evaluate Species-specific Temperature Stress
 #'
-#'#'@description
+#' @description
 #' Function to calculate temperature stress status for each individual species on the basis of air temperature values.
 #'
 #' @details
