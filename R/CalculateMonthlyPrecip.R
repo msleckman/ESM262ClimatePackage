@@ -1,13 +1,21 @@
-#' Function 2: Calculate Monthly Precipitation
+#' Calculate Monthly Precipitation
 #'
-#' @description This function takes the climate dataset clim and turns it into an multidimentional array to then output the average weekly precip per month across the years and the average weekly precipitation across the years.
-#' @param clim_data the climate dataset. Input the clim dataframe from this package
+#' @description
+#' This function takes the climate dataset clim and turns it into an multidimentional array to then
+#' output the average weekly precip per month across the years and the average weekly precipitation
+#' across the years.
+#' @param clim_data parameter to addthe climate dataset. Input the clim dataframe from this package
+#' @return List with the following items:
+#' \describe{
+#' \item{Dataframe}{dataframe of average weekly precipitation per month across all years since 1942}
+#' \item{Dataframe}{dataframe of average weekly precipitaiton for every year since 1942}
+#' }
 #' @author Sofie McComb & Margaux Sleckman
-#' @examples CalculateMonthlyPrecip(clim_data = clim)
-#' @return A list that includes a dataframe of average weekly precipitation per month across all years and a dataframe of average weekly precipitaiton per year
+#' @examples
+#' CalculateMonthlyPrecip(clim_data = clim)
 
 
-CalculateMonthlyPrecip <-function(clim_data){
+CalculateMonthlyPrecip <- function(clim_data){
 
 # Clim dataframe modification
 
