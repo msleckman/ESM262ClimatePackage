@@ -108,11 +108,11 @@ head(results2)
 
 ```
 
-####Calculate_TempStressIndex():
+####Calculate_TempStressIndex(): Evaluate Species-specific Temperature Stress
 
-PlotTempBySeason() allows you to calculate and plot maximum and minimum temperature by season across the years. The only argument required is the climate dataset to be inputted, which must be in a similar format to the clim sample dataset shown above. The function will return a dataframe and plot of maximum and minimum temperature by season over the years given in the sample dataset.
+Calculate_TempStressIndex() allows you to calculate temperature stress status for each individual species on the basis of air temperature values.The function requires two arguments: a climate dataset and species dataset to be inputted, in similar format to the clim and species dataframes shown above. The function will return a dataframe that gives the number of high temperature stress days that year and species temperature stress status by year. Species temperature stress status options are yes (species is temperature stressed that year) or no (species is not temperature stressed that year). 
 
-For example, we can give the function the clim dataset:
+For example, we can give the function the clim and species dataset:
 
 ```{r}
 
@@ -122,11 +122,11 @@ head(results3)
 
 ```
 
-####Compute_WaterRequirements():
+####Compute_WaterRequirements(): Compute Species Annual Water Status
 
-PlotTempBySeason() allows you to calculate and plot maximum and minimum temperature by season across the years. The only argument required is the climate dataset to be inputted, which must be in a similar format to the clim sample dataset shown above. The function will return a dataframe and plot of maximum and minimum temperature by season over the years given in the sample dataset.
+Compute_WaterRequirements() allows you to to compute water requirement status for different species on the basis of species minimum and maximum precipitation characteristics. The function requires two arguments: a climate dataset and species dataset to be inputted, in similar format to the clim and species dataframes shown above. The function will return a dataframe of annual precipitation levels (mm) and species annual water requirement status. Status results include insufficient (low water availability for the species annual water requirements), adequate, or saturated.
 
-For example, we can give the function the clim dataset:
+For example, we can give the function the clim and species dataset:
 
 ```{r}
 
@@ -136,17 +136,18 @@ head(results4)
 
 ```
 
-####ComputeHeatingAC_Cost():
+####ComputeHeatingAC_Cost(): Heating and Cooling Cost Function
 
-PlotTempBySeason() allows you to calculate and plot maximum and minimum temperature by season across the years. The only argument required is the climate dataset to be inputted, which must be in a similar format to the clim sample dataset shown above. The function will return a dataframe and plot of maximum and minimum temperature by season over the years given in the sample dataset.
+PlotTempBySeason() allows you to input climate data with daily minimum and maximum temperatures and return the daily cost of air conditioning and heating. The function requires four arguments: a climate dataset (similar to clim above), the dollar price of heating per degree Celsius, the dollar price of cooling per degree Celsius, and whether or not the user wants an interactive plot outputted.
+The function will return a dataframe of date, month, year, and the cost of heating and cooling for that day. If the interactive plot is selected, than a plot of costs of heating and cooling across months will be displayed.
 
-For example, we can give the function the clim dataset:
+For example, we can give the function the four arguments, including the clim dataset:
 
 ```{r}
 
 source("../R/ComputeHeatingAC_Cost.R")
 results5<-ComputeHeatingAC_Cost(clim, price_heating_per_degree = 0.8, price_cooling_per_degree = 0.8,
-                      interactive_plot_selection = T)
+                      interactive_plot_selection = F)
 head(results5)
 
 
