@@ -32,27 +32,36 @@
 #'
 
 
-ComputeHeatingAC_Cost=function(climatedata,
+ComputeHeatingAC_Cost = function(climatedata,
                                  price_heating_per_degree = 0.8, price_cooling_per_degree = 0.8,
                                  interactive_plot_selection = T){
 
-  clim_cost <- climatedata %>%
-    dplyr::mutate(average_temp = (~tmin+~tmax)/2) %>%
-    dplyr::mutate(aircond_price = ifelse(~tmin >= 14, (10 + abs(14 - ~average_temp * ~price_cooling_per_degree)), 0)) %>%
-    dplyr::mutate(heating_price = ifelse(~tmax <= 8, (10 + abs(8 - ~average_temp * ~price_heating_per_degree)), 0))
+clim_cost <- climatedata %>%
+    dplyr::mutate(average_temp = ((tmin+tmax)/2)) %>%
+    dplyr::mutate(aircond_price = ifelse(tmin >= 14, (10 + abs(14 - average_temp * price_cooling_per_degree)), 0)) %>%
+    dplyr::mutate(heating_price = ifelse(tmax <= 8, (10 + abs(8 - average_temp * price_heating_per_degree)), 0))
 
   AC_heating_per_month <- clim_cost %>%
-    dplyr::group_by(~date, ~year, ~month) %>%
-    dplyr::summarise(average_monthly_AC_cost = mean(~aircond_price),
-                     average_monthly_heating_cost = mean(~heating_price))
+    dplyr::group_by(date, year, month) %>%
+    dplyr::summarise(average_monthly_AC_cost = mean(aircond_price),
+                     average_monthly_heating_cost = mean(heating_price))
 
-  AC_heating_per_month_for_plot <- subset(~AC_heating_per_month, ~average_monthly_AC_cost != 0 |
-                                            ~average_monthly_heating_cost != 0)
+
+  meanHeating_cost <- mean(AC_heating_per_month$average_monthly_heating_cost)
+  meanAC_cost <- mean(AC_heating_per_month$average_monthly_AC_cost)
+
+
+  AC_heating_per_month_for_plot <- subset(AC_heating_per_month, average_monthly_AC_cost != 0 |
+                                            average_monthly_heating_cost != 0)
+
+
+
 
 
   plot <- ggplot2::ggplot(AC_heating_per_month_for_plot)+
-    ggiraph::geom_point_interactive(ggplot2::aes(x=~month,  y = ~average_monthly_AC_cost, tooltip = date), col="blue", alpha = 0.3)+
-    ggiraph::geom_point_interactive(ggplot2::aes(x=~month,  y = ~average_monthly_heating_cost, tooltip = date), col = "red", alpha = 0.3)+
+    ggiraph::geom_point_interactive(ggplot2::aes(x=month,  y = average_monthly_AC_cost,
+                                                 tooltip = date), col="blue", alpha = 0.3)+
+    ggiraph::geom_point_interactive(ggplot2::aes(x=month,  y = average_monthly_heating_cost, tooltip = date), col = "red", alpha = 0.3)+
     ggplot2::theme_classic()+
     ggplot2::xlab("Month")+
     ggplot2::ylab("average cost of temperature regulation ($)")+
@@ -65,18 +74,27 @@ ComputeHeatingAC_Cost=function(climatedata,
 
   interactive_plot <- ggiraph::girafe(code = print(plot))
 
+
+
+
   if(interactive_plot_selection == T){
 
-    return(list(Dataframe = AC_heating_per_month, Plot = interactive_plot))
+    return(list(Dataframe = AC_heating_per_month,
+                meanHeating_cost = meanHeating_cost,
+                meanAC_cost = meanAC_cost,
+           Plot = interactive_plot
+                ))
 
   }
 
   else{
 
-    return(list(Dataframe = AC_heating_per_month))
+    return(list(Dataframe = AC_heating_per_month,
+                meanHeating_cost = meanHeating_cost,
+                meanAC_cost = meanAC_cost
+           ))
 
   }
 
 }
-
 

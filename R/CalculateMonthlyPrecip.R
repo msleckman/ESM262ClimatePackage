@@ -13,20 +13,18 @@
 #' @author Sofie McComb & Margaux Sleckman
 #'
 
-
-
 CalculateMonthlyPrecip <- function(clim_data){
 
 # Clim dataframe modification
 
-  clim_w_week <- clim_data %>%
-  dplyr::mutate(week = ifelse(~day <= 7, 1,
-                       ifelse(~day > 7 & ~day <= 14, 2,
-                              ifelse(~day > 14 & ~day <= 21, 3,
-                                     ifelse(~day > 21, 4, NA)
-                                     )))) %>% transform(id=match(~year, unique(~year)))
+  clim_w_week <- clim %>%
+  dplyr::mutate(week = ifelse(day <= 7, 1,
+                       ifelse(day > 7 & day <= 14, 2,
+                              ifelse(day > 14 & day <= 21, 3,
+                                     ifelse(day > 21, 4, NA)
+                                     )))) %>% transform(id=match(year, unique(year)))
 
-years_working <-  length(unique(clim_data))-1
+years_working <-  length(unique(clim_w_week$year))-1
 
 clim_array = array(dim = c(4, 12, years_working))
 
@@ -37,8 +35,8 @@ for (weeks in 1:4){
     for (years in 1:years_working){
 
         value <- clim_w_week %>%
-          dplyr::filter(~week == weeks & ~month == months & ~id == years) %>%
-          dplyr::summarise(weekrain=mean(~rain, na.rm=T))
+          dplyr::filter(week == weeks & month == months & id == years) %>%
+          dplyr::summarise(weekrain=mean(rain, na.rm=T))
 
         clim_array[weeks, months, years]  = as.numeric(value)
 
@@ -50,7 +48,7 @@ for (weeks in 1:4){
 dimnames(clim_array) = list(c("week 1","week 2","week 3","week 4"),
                        c("Jan","Feb", "Mar", "Apr", "May", "Jun",
                           "Jul","Aug", "Sep", "Oct","Nov", "Dec"),
-                       c(seq(1942,2015))
+                       c(seq(from = 1942,to = 2015, by = 1))
                          )
 
 ## average precip by year
