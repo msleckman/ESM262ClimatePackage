@@ -19,9 +19,9 @@ Imports:
     stringr,
     ggiraph,
     ggplot2,
-    magrittr
+    magrittr,
+    testthat
 Suggests: 
     knitr,
-    rmarkdown,
-    testthat
+    rmarkdown
 VignetteBuilder: knitr
