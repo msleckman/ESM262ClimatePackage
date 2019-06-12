@@ -17,11 +17,19 @@ Dataframe of annual precipitation levels (mm) and species annual water requireme
 \description{
 Function to compute water requirement status for different species on the basis of species
 minimum and maximum precipitation characteristics.
+}
+\details{
 Water requirement status defined per species as insufficient (annual precipitation < species precip min),
 adequate (annual precipitation between species precip min and max), and oversaturated (annual precipitation >
 species precip max).
 Plant characteristic information from the USDA (establish minimum and maximum tolerable precipitation levels per species in mm).
+
+Function can be used to assess how well the water requirements of regional species are being met,
+and the status can serve as a flag to any potential water use issues for maintaining species health and biodiversity.
 }
 \references{
 https://plants.usda.gov/
+}
+\author{
+Sofie McComb & Margaux Sleckman
 }

@@ -1,18 +1,24 @@
 #' Plot Temperature by Season
 #'
-#' Function to calculate and plot maximum and minimum temperature by season across the years
+#' @description
+#' Function to calculate and plot maximum and minimum temperature by season across the years.
+#'
+#' @details
+#' Seasons were defined as: Spring (March, April, May), Summer (June, July, August),
+#' Fall (September, October, November), and Winter (December, January, February).
+#'
 #' @param climdata Data frame of climate data
 #' @return List with the following items
 #' \describe{
 #' \item{ClimateDF}{Data frame of maximum and minimum temperature by season over the years}
 #' \item{ClimatePlot}{Plot of maximum and minimum temperature over the years facet-wrapped by season}
 #' }
+#'
 #' @examples
 #' PlotTempBySeason(climdata=clim)
-
-#Add these throughout and in description:
-#library(tidyverse)
-#library(ggplot2)
+#'
+#' @author
+#' Sofie McComb & Margaux Sleckman
 
 PlotTempBySeason=function(climdata){
 
@@ -20,11 +26,6 @@ PlotTempBySeason=function(climdata){
 climdata<-climdata[climdata$year!=max(clim$year), ]
 
 # Add column with seasons Spring, Summer, Fall, and Winter based on Month
-  #Defining seasons as
-    #Spring: March, April, May
-    #Summer: June, July, August
-    #Fall: September, October, November
-    #Winter: December, January, February
 climdata$season<-""
 for (i in 1: nrow(climdata)){
   if(climdata$month[i]==3|climdata$month[i]==4|climdata$month[i]==5){
