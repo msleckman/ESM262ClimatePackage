@@ -20,7 +20,7 @@
 #' @references
 #' https://plants.usda.gov/
 #'
-#' @example
+#' @examples
 #' Compute_WaterRequirements(climdata=clim, speciesdf=species)
 #'
 #' @author

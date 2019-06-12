@@ -27,6 +27,10 @@ Plant characteristic information from the USDA (establish minimum and maximum to
 Function can be used to assess how well the water requirements of regional species are being met,
 and the status can serve as a flag to any potential water use issues for maintaining species health and biodiversity.
 }
+\examples{
+Compute_WaterRequirements(climdata=clim, speciesdf=species)
+
+}
 \references{
 https://plants.usda.gov/
 }

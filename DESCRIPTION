@@ -2,24 +2,19 @@ Package: ESM262ClimatePackage
 Type: Package
 Title: Climate Change Impacts Evaluation
 Version: 0.1.0
-Authors@R: c(
-  person("Sofie", "McComb", email="shemccomb@gmail.com", role="cre"),
-  person("Margaux", "Sleckman", email="msleckman@ucsb.edu", role="cre"))
-Maintainer: The package maintainers are Sofie McComb and Margaux Sleckman.
-Description: This package can be used to assess the impacts of climate changes in Santa Barbara,
-and to support decision-making on strategies to address these climate impacts.
+Author: Sofie McComb & Margaux Sleckman
+Maintainer: The package maintainer is <shemccomb@gmail.com>
+Description: This package can be used to assess the impacts of climate changes in Santa Barbara, and to support decision-making on strategies to address these climate impacts.
 License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-Depends:
-  R(>=3.5.2)
 Imports:
-  tidyverse,
-  dplyr
-  tidyr,
-  knitr,
-  ggplot2,
-  ggiraffe
-Suggests: knitr,rmarkdown
+    tidyverse,
+    dplyr,
+    tidyr,
+    readr,
+    stringr,
+    knitr
+Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
