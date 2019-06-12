@@ -39,7 +39,7 @@ Compute_WaterRequirements=function(climdata, speciesdf){
     dplyr::summarize(annualprecip=sum(rain,na.rm = T))
 
   #Add columns for species with NA values to fill in and cbind with climate data
-  speciesnam<-setNames(data.frame(matrix(ncol = length(speciesdf$Species), nrow = nrow(sumprecip))), speciesdf$Species)
+  speciesnam<-stats::setNames(data.frame(matrix(ncol = length(speciesdf$Species), nrow = nrow(sumprecip))), speciesdf$Species)
   species_climate<-cbind(sumprecip,speciesnam)
 
   #Compare annual precip to species min/max values to set water requirements status

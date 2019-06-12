@@ -45,7 +45,7 @@ Calculate_TempStressIndex=function(climdata, speciesdf){
   #Format species dataframe in wideformat to combine with climate data
   species_wide <- speciesdf %>%
     dplyr::select(Species, StressDays) %>%
-    dplyr::spread(Species, StressDays)
+    tidyr::spread(Species, StressDays)
 
   #Combine with climate data
   species_clim<-cbind(sumtemp, species_wide)
