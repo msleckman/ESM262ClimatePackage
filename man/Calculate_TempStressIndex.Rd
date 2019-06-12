@@ -2,26 +2,33 @@
 % Please edit documentation in R/Calculate_TempStressIndex.R
 \name{Calculate_TempStressIndex}
 \alias{Calculate_TempStressIndex}
-\title{Function to calculate temperature stress index for different species on the basis of air temperature}
+\title{Evaluate Species-specific Temperature Stress}
 \usage{
 Calculate_TempStressIndex(climdata, speciesdf)
 }
 \arguments{
-\item{climdata}{data frame of climate data}
+\item{climdata}{Data frame of climate data}
 
-\item{speciesdf}{data frame of species temperature and precipitation characteristic data}
+\item{speciesdf}{Data frame of species temperature and precipitation characteristics}
 }
 \value{
-dataframe of species temperature stress status by year and the number of high temperature stress days that year
+\describe{
+\item{StressDF}{Data frame including the number of high temperature stress days that year and species temperature stress status by year}
+}
 }
 \description{
-Calculate Temperature Stress Index per Species.
-Compute climate stress days, or the number of days per year where tmax >86 deg F (>30 deg C).
-If species stress days <= climate stress days, than the species stressed column equals yes, otherwise it equals no.
+Function to calculate temperature stress status for each individual species on the basis of air temperature values.
+Temperature stress evaluted by computing the number of climate stress days,
+or the number of days per year where tmax >86 deg F (>30 deg C).
+Air temperatures of >86 deg F (>30 deg C) are considered high stress temperatures for most plant species (see references).
+If the number of species tolerable stress days <= climate stress days,
+than the species stressed column equals yes (species faces temperature stress), otherwise it equals no.
+Plant characteristic information and climate tolerance sourced from the USDA.
+}
+\examples{
+Calculate_TempStressIndex(climdata=clim, speciesdf=species)
 }
 \references{
-http://agron-www.agron.iastate.edu/courses/Agron541/classes/541/lesson04a/4a.2.html
-Air temperatures of >86 deg F (>30 deg C) are considered high stress temperatures for most plant species
+http://agron-www.agron.iastate.edu/courses/Agron541/classes/541/lesson04a/4a.2.html;
 https://plants.usda.gov/
-Plant characteristic information from the USDA
 }
