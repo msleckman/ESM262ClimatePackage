@@ -33,8 +33,8 @@ Compute_WaterRequirements=function(climdata, speciesdf){
 
   #Sum the annual precipitation
   sumprecip<- climdata %>%
-    dplyr::group_by(year) %>%
-    dplyr::summarize(annualprecip=sum(rain,na.rm = T))
+    dplyr::group_by(~year) %>%
+    dplyr::summarize(annualprecip=sum(~rain,na.rm = T))
 
   #Add columns for species with NA values to fill in and cbind with climate data
   speciesnam<-stats::setNames(data.frame(matrix(ncol = length(speciesdf$Species), nrow = nrow(sumprecip))), speciesdf$Species)

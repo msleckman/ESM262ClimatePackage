@@ -18,6 +18,7 @@ Imports:
     readr,
     stringr,
     ggiraph,
-    ggplot2
+    ggplot2,
+    magrittr
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
