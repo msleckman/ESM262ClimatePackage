@@ -17,18 +17,28 @@ Calculate_TempStressIndex(climdata, speciesdf)
 }
 }
 \description{
+#'@description
 Function to calculate temperature stress status for each individual species on the basis of air temperature values.
+}
+\details{
 Temperature stress evaluted by computing the number of climate stress days,
 or the number of days per year where tmax >86 deg F (>30 deg C).
 Air temperatures of >86 deg F (>30 deg C) are considered high stress temperatures for most plant species (see references).
 If the number of species tolerable stress days <= climate stress days,
 than the species stressed column equals yes (species faces temperature stress), otherwise it equals no.
 Plant characteristic information and climate tolerance sourced from the USDA.
+
+Function can be used to assess which species face greater temperature stress in the region,
+and may need additional support.
 }
 \examples{
 Calculate_TempStressIndex(climdata=clim, speciesdf=species)
+
 }
 \references{
 http://agron-www.agron.iastate.edu/courses/Agron541/classes/541/lesson04a/4a.2.html;
 https://plants.usda.gov/
+}
+\author{
+Sofie McComb & Margaux Sleckman
 }
