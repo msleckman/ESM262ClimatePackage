@@ -18,7 +18,7 @@
 #'  So, you will spend $10.8 if the average outdoor temp is 15 degrees.
 #'
 #' @param climatedata This is where you put in a climate dataset.
-#' @param price_heating_per_degree This is the cost of every incremental increasing in heating due to the difference in actual heating with the baseline.
+#' @param price_heating_per_degree This is the cost of every incremental increasing in heating due #' to the difference in actual heating with the baseline.
 #' @param price_cooling_per_degree Same as above, but for cooling.
 #' @param interactive_plot_selection If T, the function returns a plot of the cost datapoints. The
 #' AC costs are in blue, the heating costs are in red.
