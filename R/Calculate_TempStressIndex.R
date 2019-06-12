@@ -37,13 +37,13 @@ Calculate_TempStressIndex=function(climdata, speciesdf){
 
   #Sum the number of days each year with max temp >86F (30C)
   sumtemp<- climdata %>%
-    dplyr::group_by(~year) %>%
-    dplyr::summarize(stressdays=sum(~tmax >= 30,na.rm = T))
+    dplyr::group_by(year) %>%
+    dplyr::summarize(stressdays=sum(tmax >= 30,na.rm = T))
 
   #Format species dataframe in wideformat to combine with climate data
   species_wide <- speciesdf %>%
-    dplyr::select(~Species, ~StressDays) %>%
-    tidyr::spread(~Species, ~StressDays)
+    dplyr::select(Species, StressDays) %>%
+    tidyr::spread(Species, StressDays)
 
   #Combine with climate data
   species_clim<-cbind(sumtemp, species_wide)
