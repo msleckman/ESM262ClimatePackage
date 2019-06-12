@@ -87,7 +87,7 @@ For example, we can give the function the clim dataset, and call the specific ou
 ```{r}
 
 source("../R/PlotTempBySeason.R")
-results1<-PlotTempBySeason(clim)
+results1 <- PlotTempBySeason(clim)
 
 #Call the dataframe of results
 head(results1$ClimateDF)
@@ -97,14 +97,14 @@ head(results1$ClimateDF)
 
 ####CalculateMonthlyPrecip(): Calculate Monthly Precipitation
 
-CalculateMonthlyPrecip() transforms a climate dataset into a multidimentional array and calculates the average weekly weekly precipitation by month and by year, returning two dataframes with the solutions. The only argument required is the climate dataset to be inputted, which must be in a similar format to the clim sample dataset shown above.
+CalculateMonthlyPrecip() transforms a climate dataset into a multidimentional array and calculates the average weekly precipitation by month and by year, returning two dataframes with the solutions. The only argument required is the climate dataset, which must be in a similar format to the clim sample dataset shown above.
 
 For example, we can give the function the clim dataset:
 
 ```{r}
 
 source("../R/CalculateMonthlyPrecip.R")
-results2<-CalculateMonthlyPrecip(clim)
+results2 <- CalculateMonthlyPrecip(clim)
 
 head(results2)
 
@@ -119,7 +119,7 @@ For example, we can give the function the clim and species dataset:
 ```{r}
 
 source("../R/Calculate_TempStressIndex.R")
-results3<-Calculate_TempStressIndex(clim, species)
+results3 <- Calculate_TempStressIndex(clim, species)
 head(results3)
 
 ```
@@ -133,24 +133,40 @@ For example, we can give the function the clim and species dataset:
 ```{r}
 
 source("../R/Compute_WaterRequirements.R")
-results4<-Compute_WaterRequirements(clim, species)
+results4 <- Compute_WaterRequirements(clim, species)
 head(results4)
 
 ```
 
 ####ComputeHeatingAC_Cost(): Heating and Cooling Cost Function
 
-PlotTempBySeason() allows you to input climate data with daily minimum and maximum temperatures and return the daily cost of air conditioning and heating. The function requires four arguments: a climate dataset (similar to clim above), the dollar price of heating per degree Celsius, the dollar price of cooling per degree Celsius, and whether or not the user wants an interactive plot outputted.
-The function will return a dataframe of date, month, year, and the cost of heating and cooling for that day. If the interactive plot is selected, than a plot of costs of heating and cooling across months will be displayed.
+ComputeHeatingAC_Cost() allows you to input climate data with daily minimum and maximum temperatures and return the a summary of cost results. 
+
+The function requires four arguments: a climate dataset (similar to clim above), the dollar price of heating per degree Celsius (default = $0.8), the dollar price of Air conditioning (AC) per degree Celsius (default = $0.8), and whether or not the user wants an interactive plot outputted. The user has the ability to change the cost of AC and Heating and see how daily costs change.
+
+The function will return:
+
+1. A table of the average daily cost for heating and AC per month 
+2. The mean daily heating and AC costs costs based on the histical climate data
+3. If desired, an interactive plot of all daily heating and AC cost datapoints distributed by month. If the interactive plot is selected, than a plot of costs of heating and cooling across months will be displayed.
 
 For example, we can give the function the four arguments, including the clim dataset:
 
 ```{r}
 
 source("../R/ComputeHeatingAC_Cost.R")
-results5<-ComputeHeatingAC_Cost(clim, price_heating_per_degree = 0.8, price_cooling_per_degree = 0.8,
+results5 <- ComputeHeatingAC_Cost(clim,
+                                  price_heating_per_degree = 0.8,
+                                  price_cooling_per_degree = 0.8,
                       interactive_plot_selection = F)
+
 head(results5)
 
+results6 <- ComputeHeatingAC_Cost(clim,
+                                  price_heating_per_degree = 0.8,
+                                  price_cooling_per_degree = 0.8,
+                      interactive_plot_selection = T)
+
+# results5$Plot
 
 ```
