@@ -18,8 +18,8 @@ test_that("ComputeHeatingAC_Cost works",{
 
 clim_test_data <- clim_test_data %>% dplyr::mutate_if(is.factor,as.numeric)
 
-testthat::expect_that(ComputeHeatingAC_Cost(clim_test_data)$meanHeating_cost, equals(16))
-testthat::expect_that(ComputeHeatingAC_Cost(clim_test_data)$meanAC_cost, equals(0))
+testthat::expect_that(ComputeHeatingAC_Cost(clim_test_data)$mean_heating_cost, equals(15.92))
+testthat::expect_that(ComputeHeatingAC_Cost(clim_test_data)$mean_AC_cost, equals(0))
 
 })
 
