@@ -1,12 +1,11 @@
 #' Function 5: Heating and Cooling Cost Function
 #' @title Heating and Cooling Cost Function
-#' @description This function takes climate data with daily minimum and maximum temperatures and returns the daily cost of air conditions and heating.
-#' @concepts The equation used to calculate the heating and cooling cost goes as the following: We assume the user will turn on heating if the temperature maximum is 8 degrees C. We assume the user will turn on AC if the temperature minimum is 14 degrees. Simply turning on the AC or the heater costs $10, and every additional degree above the baseline (8 C or 14 C) costs a specified price_per_degree. The default is 0.8, but this can be change by manipulating the appropriate param.
+#' @description This function takes climate data with daily minimum and maximum temperatures and returns the daily cost of air conditions and heating. The equation used to calculate the heating and cooling cost goes as the following: We assume the user will turn on heating if the temperature maximum is 8 degrees C. We assume the user will turn on AC if the temperature minimum is 14 degrees. Simply turning on the AC or the heater costs $10, and every additional degree above the baseline (8 C or 14 C) costs a specified price_per_degree. The default is 0.8, but this can be change by manipulating the appropriate param.
 #' @param climatedata This is where you put in a climate dataset.
 #' @param price_heating_per_degree this is the cost of every incremental increasing in heating due to the difference in actual heating with the baseline.
 #' @param price_cooling_per_degree same as above, but for cooling.
 #' @author Sofie McComb & Margaux Sleckman
-#' @example calculate_heating_AC_cost(climatedata = clim, price_heating_per_degree = 0.8,
+#' @examples  calculate_heating_AC_cost(climatedata = clim, price_heating_per_degree = 0.8,
 #' price_cooling_per_degree = 0.8, interactive_plot_selection = T)
 #' @return a list of the dataframe with date, month, year, and the cost of heating and cooling for that day.
 
@@ -61,7 +60,9 @@ if(interactive_plot_selection == T){
   }
 
 else{
+
   return(list(Dataframe = AC_heating_per_month))
+
   }
 
 }
