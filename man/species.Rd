@@ -6,18 +6,18 @@
 \title{Sample Plant Characteristic Data}
 \format{A data frame with 3 rows and 7 variables:
 \itemize{
-\item Species species identifier
-\item Scientific species scientific name
-\item Common species common name
-\item DroughtTolerance drought tolerance capability (low, medium, high)
-\item StressDays # of days species can tolerate high temperatures per year before becoming stressed
-\item PrecipMin minimum precipitation tolerated by the species
-\item PrecipMax maximum precipitation tolerated by the species
+\item Species is the species identifier
+\item Scientific is the species scientific name
+\item Common is the species common name
+\item DroughtTolerance is the drought tolerance capability (low, medium, high)
+\item StressDays is the number of days species can tolerate high temperatures per year before becoming stressed
+\item PrecipMin is the minimum precipitation tolerated by the species
+\item PrecipMax is the maximum precipitation tolerated by the species
 }}
 \source{
-\url{#http://agron-www.agron.iastate.edu/courses/Agron541/classes/541/lesson04a/4a.2.html}
+\url{http://agron-www.agron.iastate.edu/courses/Agron541/classes/541/lesson04a/4a.2.html}
 
-\url{#https://plants.usda.gov/}
+\url{https://plants.usda.gov/}
 }
 \usage{
 species
