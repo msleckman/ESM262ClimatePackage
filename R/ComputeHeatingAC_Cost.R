@@ -55,11 +55,11 @@ ComputeHeatingAC_Cost = function(climatedata,
 
   AC_heating_per_month <- clim_cost %>%
     dplyr::group_by(month_name) %>%
-    dplyr::summarise(average_monthly_AC_cost = mean(AC_cost_daily),
-                     average_monthly_heating_cost = mean(heating_cost_daily))
+    dplyr::summarise(average_daily_AC_cost = mean(AC_cost_daily),
+                     average_daily_heating_cost = mean(heating_cost_daily))
 
-  meanHeating_cost <- mean(AC_heating_per_month$average_monthly_heating_cost)
-  meanAC_cost <- mean(AC_heating_per_month$average_monthly_AC_cost)
+  meanHeating_cost <- mean(AC_heating_per_month$average_daily_heating_cost)
+  meanAC_cost <- mean(AC_heating_per_month$average_daily_AC_cost)
 
   AC_heating_per_month_for_plot <- subset(daily_AC_heating,
                                           AC_cost_daily != 0 | heating_cost_daily != 0)
