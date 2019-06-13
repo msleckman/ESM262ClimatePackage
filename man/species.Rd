@@ -6,7 +6,7 @@
 \title{Sample Plant Characteristic Data}
 \format{A data frame with 3 rows and 7 variables:
 \itemize{
-\item Species is the species identifier
+\item Species is the species four letter identifier, based on scientific name
 \item Scientific is the species scientific name
 \item Common is the species common name
 \item DroughtTolerance is the drought tolerance capability (low, medium, high)
@@ -24,6 +24,8 @@ species
 }
 \description{
 Sample dataset for various Santa Barbara plant species providing climate and growth-based plant characteristics.
+}
+\details{
 Species information given by species identifier, scientific name, and common name.
 Dataset provides drought tolerance capability and the number of days species can tolerate high heat stress days per year.
 Data also reports minimum and maximum amount of precipitation the species can tolerate.

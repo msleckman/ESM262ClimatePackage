@@ -2,12 +2,12 @@
 % Please edit documentation in R/PlotTempBySeason.R
 \name{PlotTempBySeason}
 \alias{PlotTempBySeason}
-\title{Plot Temperature by Season}
+\title{Calculate and Plot Temperature by Season}
 \usage{
 PlotTempBySeason(climdata)
 }
 \arguments{
-\item{climdata}{Data frame of climate data}
+\item{climdata}{Data frame of climate data, including temperature, precipitation, water year, and dates}
 }
 \value{
 List with the following items
@@ -22,6 +22,10 @@ Function to calculate and plot maximum and minimum temperature by season across 
 \details{
 Seasons were defined as: Spring (March, April, May), Summer (June, July, August),
 Fall (September, October, November), and Winter (December, January, February).
+Temperature in is degrees Celsius.
+
+Function can be used to assess how average seasonal temperature extremes have changed annually,
+which can provide important information for assessing how climate has potentially shifted in the region over time.
 }
 \author{
 Sofie McComb & Margaux Sleckman

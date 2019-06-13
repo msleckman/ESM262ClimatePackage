@@ -13,9 +13,12 @@
 #' Function can be used to assess how well the water requirements of regional species are being met,
 #' and the status can serve as a flag to any potential water use issues for maintaining species health and biodiversity.
 #'
-#' @param climdata Data frame of climate data
+#' @param climdata Data frame of climate data, including temperature, precipitation, water year, and dates
 #' @param speciesdf Data frame of species temperature and precipitation characteristic data
-#' @return Dataframe of annual precipitation levels (mm) and species annual water requirement status
+#' @return
+#' \describe{
+#' \item{WaterReqDF}{Dataframe of annual precipitation levels (mm) and species annual water requirement status}
+#'}
 #'
 #' @references
 #' https://plants.usda.gov/
@@ -46,7 +49,7 @@ Compute_WaterRequirements=function(climdata, speciesdf){
     for (s in 1:nrow(speciesdf)){
       sp<-speciesdf[s, c("PrecipMin", "PrecipMax")]
       ifelse(annprecip<sp$PrecipMin, species_climate[y,s+2]<-"Insufficient",
-             ifelse(annprecip>sp$PrecipMax, species_climate[y,s+2]<-"Saturated",
+             ifelse(annprecip>sp$PrecipMax, species_climate[y,s+2]<-"Oversaturated",
                     species_climate[y,s+2]<-"Adequate"))
     }#End species for loop
   }#End year for loop

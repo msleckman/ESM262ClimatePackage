@@ -7,12 +7,14 @@
 Compute_WaterRequirements(climdata, speciesdf)
 }
 \arguments{
-\item{climdata}{Data frame of climate data}
+\item{climdata}{Data frame of climate data, including temperature, precipitation, water year, and dates}
 
 \item{speciesdf}{Data frame of species temperature and precipitation characteristic data}
 }
 \value{
-Dataframe of annual precipitation levels (mm) and species annual water requirement status
+\describe{
+\item{WaterReqDF}{Dataframe of annual precipitation levels (mm) and species annual water requirement status}
+}
 }
 \description{
 Function to compute water requirement status for different species on the basis of species

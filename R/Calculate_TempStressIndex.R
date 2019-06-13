@@ -1,24 +1,25 @@
-#' Evaluate Species-specific Temperature Stress
+#' Evaluate Species Specific Temperature Stress
 #'
 #' @description
 #' Function to calculate temperature stress status for each individual species on the basis of air temperature values.
 #'
 #' @details
-#' Temperature stress evaluted by computing the number of climate stress days,
+#' Temperature stress evaluted by computing the number of annual climate stress days,
 #' or the number of days per year where tmax >86 deg F (>30 deg C).
 #' Air temperatures of >86 deg F (>30 deg C) are considered high stress temperatures for most plant species (see references).
-#' If the number of species tolerable stress days <= climate stress days,
+#' If the number of species tolerable temperature stress days <= climate stress days,
 #' than the species stressed column equals yes (species faces temperature stress), otherwise it equals no.
-#' Plant characteristic information and climate tolerance sourced from the USDA.
+#' There is a unique stressed column for each species, with the species identifier as the column name header.
+#' Plant characteristic information and climate tolerance information is sourced from the USDA.
 #'
-#' Function can be used to assess which species face greater temperature stress in the region,
+#' This function can be used to assess which species face reoccurring temperature stress in the region,
 #' and may need additional support.
 #'
-#' @param climdata Data frame of climate data
+#' @param climdata Data frame of climate data, including temperature, precipitation, water year, and dates
 #' @param speciesdf Data frame of species temperature and precipitation characteristics
 #' @return
 #' \describe{
-#' \item{StressDF}{Data frame including the number of high temperature stress days that year and species temperature stress status by year}
+#' \item{StressDF}{Data frame including the number of annual high temperature stress days and species temperature stress status by year}
 #'}
 #' @references
 #' http://agron-www.agron.iastate.edu/courses/Agron541/classes/541/lesson04a/4a.2.html;

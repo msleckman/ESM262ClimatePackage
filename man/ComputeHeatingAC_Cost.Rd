@@ -8,39 +8,43 @@ ComputeHeatingAC_Cost(climatedata, price_heating_per_degree = 0.8,
   price_cooling_per_degree = 0.8, interactive_plot_selection = F)
 }
 \arguments{
-\item{climatedata}{This is where you put in a climate dataset.}
+\item{climatedata}{Data frame of climate data, including temperature, precipitation, water year, and dates}
 
-\item{price_heating_per_degree}{This is the cost of every incremental increasing in heating due #' to the difference in actual heating with the baseline.}
+\item{price_heating_per_degree}{Cost of every incremental change in heating from the baseline (8 degrees C)}
 
-\item{price_cooling_per_degree}{Same as above, but for cooling.}
+\item{price_cooling_per_degree}{Cost of every incremental change in cooling from the baseline (14 degrees C)}
 
-\item{interactive_plot_selection}{If T, the function returns a plot of the cost datapoints. The
-AC costs are in blue, the heating costs are in red.
-#' @return List with the following items
+\item{interactive_plot_selection}{If equals TRUE, the function returns an interactive plot of the daily temperature
+regulation cost datapoints. The AC costs are in blue, the heating costs are in red.}
+}
+\value{
+List with the following items:
 \describe{
-\item{Dataframe}{Data frame of date, month, year, and the cost of heating and cooling for that
-day}
-\item{meanHeating_cost}{1 number representing the mean heating cost}
-\item{meanAC_cost}{1 number representing the mean AC cost}
-\item{Plot}{Plot of costs of heating and cooling across months}
-}}
+\item{MonthlyDataframe}{Data frame of the average heating and AC costs per month based on daily climate data}
+\item{mean_heating_cost}{Value representing the mean daily heating cost}
+\item{mean_AC_cost}{Value representing the mean daily AC cost}
+\item{Plot}{Interactive plot of costs of heating and cooling by month}
+}
 }
 \description{
-This function takes climate data with daily minimum and maximum temperatures and returns the
-daily cost of air conditions and heating.
+This function takes historical climate data with daily minimum and maximum temperatures
+and returns a summary of the daily cost of air conditioning (AC) and heating. The function computes
+the average monthly cost of heating and AC, the mean daily cost of AC and Heating, and an
+optional interactive graph of daily heating and AC costs across the months of the year. The
+costs are based on the assumed equation described in the details section.
 }
 \details{
-The equation used to calculate the heating and cooling cost goes as the following: We assume the
-user will turn on heating
- if the temperature maximum is 8 degrees C. We assume the user will turn on AC if the temperatu
- e minimum is 14 degrees.
- Simply turning on the AC or the heater costs $10, and every additional degree above the
- baseline (8 C or 14 C) costs a
- specified price_per_degree. The default is 0.8, but this can be change by manipulating the
- appropriate param.
- This means that with every degree increase above or below the baseline temp, the cost goes up
- .8 cents.
- So, you will spend $10.8 if the average outdoor temp is 15 degrees.
+The equation used to calculate the heating and cooling cost goes as the following:
+We assume the user will turn on the heater if the temperature maximum (tmax) is 8 degrees C. We
+assume the user will turn on the AC if the temperature minimum (tmin) is 14 degrees.
+Simply turning on the AC or the heater costs $10, and every additional degree change from the
+baseline (8 C or 14 C) costs a specified price_per_degree. The default is 0.8, but this can be
+changed by manipulating the appropriate function argument. Therefore, with a default of 0.8,
+with every degree increase above or below the baseline temp, the cost goes up 0.8 cents.
+For example, you will spend $10.8 if the average outdoor temp is 15 degrees.
+
+Function can be used to assess how changes in long-term climate can impact the cost of human
+well-being through the change in costs of AC and heating.
 }
 \author{
 Sofie McComb & Margaux Sleckman

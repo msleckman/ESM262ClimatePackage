@@ -1,9 +1,10 @@
 #' Climate Data from Santa Barbara County
 #'
+#' @description
 #' Data from SB-LTER metereology station, daily
 #' meterologic data including minimum temperature,
 #' maximum temperature, precipitation, water year,
-#' and the date
+#' and the date.
 #'
 #' @format A data frame with 27274 rows and 8 variables:
 #' \itemize{

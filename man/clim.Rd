@@ -25,6 +25,6 @@ clim
 Data from SB-LTER metereology station, daily
 meterologic data including minimum temperature,
 maximum temperature, precipitation, water year,
-and the date
+and the date.
 }
 \keyword{datasets}

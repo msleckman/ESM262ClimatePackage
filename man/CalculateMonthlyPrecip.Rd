@@ -2,26 +2,37 @@
 % Please edit documentation in R/CalculateMonthlyPrecip.R
 \name{CalculateMonthlyPrecip}
 \alias{CalculateMonthlyPrecip}
-\title{Calculate Monthly Precipitation}
+\title{Calculate Average Monthly and Annual Precipitation}
 \usage{
 CalculateMonthlyPrecip(clim_data, full_clim_dataset = T)
 }
 \arguments{
-\item{clim_data}{parameter to addthe climate dataset. Input the clim dataframe from this package}
+\item{clim_data}{Data frame of climate data, including temperature, precipitation, water year, and dates}
 
-\item{full_clim_dataset}{If T, set to accept the clim datasetand will print dimnames appropriate #' for size of that df}
+\item{full_clim_dataset}{If equals TRUE, then the function accepts the full sample clim dataset
+and will print dimnames appropriate for the size of that dataframe}
 }
 \value{
 List with the following items:
 \describe{
-\item{Dataframe}{dataframe of average weekly precipitation per month across all years since 1942}
-\item{Dataframe}{dataframe of average weekly precipitaiton for every year since 1942}
+\item{avge_precipitation_month}{Dataframe of average weekly precipitation (mm) per month across all years}
+\item{avge_precipitation_year}{Dataframe of average weekly precipitaiton (mm) for every year}
 }
 }
 \description{
-This function takes the climate dataset clim and turns it into an multidimentional array to then
-output the average weekly precip per month across the years and the average weekly precipitation
-across the years.
+This function transforms a climate dataset input into a multidimentional array
+and then performs calculations on the array to
+output the average weekly precipitation per month across the years (summarize by months)
+and the average weekly precipitation across the years (summarize by years).
+}
+\details{
+To perform these calculations, a weeks column was added to the climate dataframe, as the number of days varies across the months.
+Four weeks were defined per month, with the first three weeks each having 7 days, and the last week containing the rest of the
+days in the month, often approximately 10 days. The difference in the number of days per week was determined to not have a
+significant impact on the average weekly precipitation. Precipitation given in mm.
+
+This function can be used to increase understanding of changes in mean precipitation levels over time,
+both monthly and over the years, in order to inform regional hydrologic decion-making, particularly water availability.
 }
 \author{
 Sofie McComb & Margaux Sleckman

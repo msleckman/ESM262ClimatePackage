@@ -1,4 +1,4 @@
-#' Plot Temperature by Season
+#' Calculate and Plot Temperature by Season
 #'
 #' @description
 #' Function to calculate and plot maximum and minimum temperature by season across the years.
@@ -6,8 +6,12 @@
 #' @details
 #' Seasons were defined as: Spring (March, April, May), Summer (June, July, August),
 #' Fall (September, October, November), and Winter (December, January, February).
+#' Temperature in is degrees Celsius.
 #'
-#' @param climdata Data frame of climate data
+#' Function can be used to assess how average seasonal temperature extremes have changed annually,
+#' which can provide important information for assessing how climate has potentially shifted in the region over time.
+#'
+#' @param climdata Data frame of climate data, including temperature, precipitation, water year, and dates
 #' @return List with the following items
 #' \describe{
 #' \item{ClimateDF}{Data frame of maximum and minimum temperature by season over the years}
@@ -41,7 +45,7 @@ for (i in 1: nrow(climdata)){
 meanclim <- climdata %>%
   dplyr::group_by(year, season) %>%
   dplyr::summarise(avgmaxtemp = mean(tmax, na.rm = T),
-            avgmintemp=mean(tmin, na.rm=T))
+                   avgmintemp=mean(tmin, na.rm=T))
 
 #Plot the max and min seasonal temp per year
 climplot<-ggplot2::ggplot(meanclim, ggplot2::aes(x=year)) +
@@ -49,8 +53,8 @@ climplot<-ggplot2::ggplot(meanclim, ggplot2::aes(x=year)) +
   ggplot2::geom_line(ggplot2::aes(y=avgmintemp),colour="skyblue") +
   ggplot2::facet_grid(~season)+
   ggplot2::theme_light()+
-  ggplot2::labs(x = "Years",
-       y = "Temperature (Celsius)")
+  ggplot2::labs(title="Average Maximum and Minimum Seasonal Temperatures",
+                x = "Years", y = "Temperature (Celsius)")
 
 #Return dataframe and ggplot
 return(list(ClimateDF=meanclim, ClimatePlot=climplot))
