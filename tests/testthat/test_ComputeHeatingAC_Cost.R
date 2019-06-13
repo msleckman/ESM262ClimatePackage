@@ -1,5 +1,5 @@
 #Test that the compute heating and AC cost functions returns the correct values for a different test dataset
-test_that("Test that the ComputeHeatingAC_Cost functions performs calculations correctly and returns correct values",{
+testthat::test_that("Test that the ComputeHeatingAC_Cost functions performs calculations correctly and returns correct values",{
 #Create climate dataset for testing
   clim_test_data =
   as.data.frame(
