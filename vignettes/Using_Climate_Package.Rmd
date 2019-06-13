@@ -10,19 +10,13 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-```
-
-
-```{r, echo = FALSE, message = FALSE}
-knitr::opts_chunk$set(collapse = T, comment = "#>")
-options(tibble.print_min = 4L, tibble.print_max = 4L)
 library(ESM262ClimatePackage)
 ```
 
-
 The ESM262ClimatePackage was developed to perform introductory assessments of climate change impacts to inform climate change mitigation and adaptation strategies.
 
-This document introduces you to the packages functions, and shows how they can be used with sample dataframes. This vignette can be called by using vignette("Using_Climate_Package").
+This document introduces you to the packages' functions, and shows how they can be used with sample datasets. 
+This vignette can be called by using vignette("Using_Climate_Package").
 
 There are two sample datasets included in the package:
 
@@ -49,7 +43,7 @@ To explore how the functions in the Using_Climate_Package work, we will be using
  + maximum temperature (degC)
  + precipitation (mm/day)
  + water year
- + date (including date, month, year)
+ + date (including separate date, day, month, year columns)
 
 2. species = dataframe of species plant characterisitc information (https://plants.usda.gov/) including:
  + species identifier
@@ -60,11 +54,7 @@ To explore how the functions in the Using_Climate_Package work, we will be using
  + minimum annual precipitation (mm) species can tolerate
  + maximum annual precipitation (mm) species can tolerate
 
-More information for both datasets can be found by using help(clim) and help(species).
-
 ```{r}
-
-library(ESM262ClimatePackage)
 
 #Explore clim dataset
 data(clim)
@@ -76,13 +66,15 @@ head(species)
 
 ```
 
+The clim dataset is a useful sample climate dataset to be used in all five functions, while the species dataset can be used in the two impact functions: Calculate_TempStressIndex and Compute_WaterRequirements.
+More information for both datasets can be found by using help(clim) and help(species).
 
 ##Functions
 
 ###PlotTempBySeason(): Calculate and Plot Seasonal Temperatures
-PlotTempBySeason() allows you to calculate and plot maximum and minimum temperature by season across the years. The only argument required is the climate dataset to be inputted, which must be in a similar format to the clim sample dataset shown above. The function will return a dataframe with the average maximum temperatue and minimimum temperature by season for each year. It will also return a plot of maximum and minimum temperature by season over the years given in the sample dataset, with maximum average in red and minimum average in blue.
+PlotTempBySeason() allows you to calculate and plot average maximum and minimum temperatures by season across the years. The only argument required is the climate dataset to be inputted, which must be in a similar format to the clim sample dataset shown above. The function will return a dataframe with the average maximum and minimimum temperatures by season for each year. It will also return a plot of maximum and minimum temperature by season over the years given, with maximum average temperature in red and minimum average temperature in blue.
 
-For example, we can give the function the clim dataset, and call the specific outputs:
+For example, we can give the function the clim dataset, and call a specific outputs:
 
 ```{r}
 
@@ -94,27 +86,33 @@ head(results1$ClimateDF)
 
 ```
 
+Function can be used to assess how average seasonal temperature extremes have changed annually,
+which can provide important information for assessing how climate has potentially shifted in the region over time.
+More information is available in the function documentation, accessible by ?PlotTempBySeason.
 
-####CalculateMonthlyPrecip(): Calculate Monthly Precipitation
+####CalculateMonthlyPrecip(): Calculate Average Monthly and Annual Precipitation
 
-CalculateMonthlyPrecip() transforms a climate dataset into a multidimentional array and calculates the average weekly precipitation by month and by year, returning two dataframes with the solutions. The only argument required is the climate dataset, which must be in a similar format to the clim sample dataset shown above.
+CalculateMonthlyPrecip() transforms a climate dataset into a multidimentional array and calculates the average weekly precipitation by month and by year, returning two dataframes with the solutions. Thearguments required are a climate dataset, which must be in a similar format to the clim sample dataset shown above, and whether or not the sample climate dataset is the example clim (to show proper sample formatting).
 
 For example, we can give the function the clim dataset:
 
 ```{r}
 
 source("../R/CalculateMonthlyPrecip.R")
-results2 <- CalculateMonthlyPrecip(clim)
-
-head(results2)
+results2 <- CalculateMonthlyPrecip(clim, full_clim_dataset = T)
+head(results2$avge_precipitation_month)
 
 ```
 
-####Calculate_TempStressIndex(): Evaluate Species-specific Temperature Stress
+This function can be used to increase understanding of changes in mean precipitation levels over time,
+both monthly and over the years, in order to inform regional hydrologic decion-making, particularly water availability. 
+More information is available in the function documentation, accessible by ?CalculateMonthlyPrecip.
+
+####Calculate_TempStressIndex(): Evaluate Species Specific Temperature Stress
 
 Calculate_TempStressIndex() allows you to calculate temperature stress status for each individual species on the basis of air temperature values.The function requires two arguments: a climate dataset and species dataset to be inputted, in similar format to the clim and species dataframes shown above. The function will return a dataframe that gives the number of high temperature stress days that year and species temperature stress status by year. Species temperature stress status options are yes (species is temperature stressed that year) or no (species is not temperature stressed that year). 
 
-For example, we can give the function the clim and species dataset:
+For example, we can give the function the clim and species datasets:
 
 ```{r}
 
@@ -124,11 +122,14 @@ head(results3)
 
 ```
 
+This function can be used to assess which species face reoccurring temperature stress in the region, and may need additional support.
+More information is available in the function documentation, accessible by ?Calculate_TempStressIndex.
+
 ####Compute_WaterRequirements(): Compute Species Annual Water Status
 
-Compute_WaterRequirements() allows you to to compute water requirement status for different species on the basis of species minimum and maximum precipitation characteristics. The function requires two arguments: a climate dataset and species dataset to be inputted, in similar format to the clim and species dataframes shown above. The function will return a dataframe of annual precipitation levels (mm) and species annual water requirement status. Status results include insufficient (low water availability for the species annual water requirements), adequate, or saturated.
+Compute_WaterRequirements() allows you to to compute the water requirement status for different species on the basis of species minimum and maximum precipitation characteristics. The function requires two arguments: a climate dataset and species dataset to be inputted, in similar format to the clim and species dataframes shown above. The function will return a dataframe of annual precipitation levels (mm) and species annual water requirement status. Status results include insufficient (too low water availability for the species annual water requirements), adequate (within the precipitation min and max range), or oversaturated (too high water availability for the species annual water requirements).
 
-For example, we can give the function the clim and species dataset:
+For example, we can give the function the clim and species datasets:
 
 ```{r}
 
@@ -138,17 +139,21 @@ head(results4)
 
 ```
 
+Function can be used to assess how well the water requirements of regional species are being met,
+and the status can serve as a flag to any potential water use issues for maintaining species health and biodiversity.
+More information is available in the function documentation, accessible by ?Compute_WaterRequirements.
+
 ####ComputeHeatingAC_Cost(): Heating and Cooling Cost Function
 
-ComputeHeatingAC_Cost() allows you to input climate data with daily minimum and maximum temperatures and return the a summary of cost results. 
+ComputeHeatingAC_Cost() allows you to input climate data with daily minimum and maximum temperatures and return a summary of cost results. 
 
-The function requires four arguments: a climate dataset (similar to clim above), the dollar price of heating per degree Celsius (default = $0.8), the dollar price of Air conditioning (AC) per degree Celsius (default = $0.8), and whether or not the user wants an interactive plot outputted. The user has the ability to change the cost of AC and Heating and see how daily costs change.
+The function requires four arguments: a climate dataset (similar to clim above), the dollar price of heating per degree Celsius (default = $0.8), the dollar price of Air conditioning (AC) per degree Celsius (default = $0.8), and whether or not the user wants an interactive plot outputted. The user has the ability to change the cost of AC and Heating and see how climate regulating costs change.
 
 The function will return:
 
 1. A table of the average daily cost for heating and AC per month 
-2. The mean daily heating and AC costs costs based on the histical climate data
-3. If desired, an interactive plot of all daily heating and AC cost datapoints distributed by month. If the interactive plot is selected, than a plot of costs of heating and cooling across months will be displayed.
+2. The mean daily heating and AC costs averaged over months and years
+3. If desired, an interactive plot of all daily heating and AC cost data points distributed by month. If the interactive plot is selected, than a plot of costs of heating and cooling across months will be displayed, and the dates can be visualized by hovering over points.
 
 For example, we can give the function the four arguments, including the clim dataset:
 
@@ -158,15 +163,19 @@ source("../R/ComputeHeatingAC_Cost.R")
 results5 <- ComputeHeatingAC_Cost(clim,
                                   price_heating_per_degree = 0.8,
                                   price_cooling_per_degree = 0.8,
-                      interactive_plot_selection = F)
+                                  interactive_plot_selection = F)
 
 head(results5)
 
 results6 <- ComputeHeatingAC_Cost(clim,
                                   price_heating_per_degree = 0.8,
                                   price_cooling_per_degree = 0.8,
-                      interactive_plot_selection = T)
+                                  interactive_plot_selection = T)
 
-# results5$Plot
+results6$Plot
 
 ```
+
+Function can be used to assess how changes in long-term climate can impact the cost of human
+well-being through the change in costs of AC and heating.
+More information is available in the function documentation, accessible by ?ComputeHeatingAC_Cost
