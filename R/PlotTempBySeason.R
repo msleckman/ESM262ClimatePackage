@@ -1,7 +1,7 @@
 #' Calculate and Plot Temperature by Season
 #'
 #' @description
-#' Function to calculate and plot maximum and minimum temperature by season across the years.
+#' Function to calculate and plot average maximum and minimum temperature by season across the years.
 #'
 #' @details
 #' Seasons were defined as: Spring (March, April, May), Summer (June, July, August),
